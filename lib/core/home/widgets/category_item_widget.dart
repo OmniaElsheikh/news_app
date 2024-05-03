@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../data/models/category_model.dart';
 import '../../config/constants.dart';
-import '../../models/category_model.dart';
-//import library 'package:cashed_network_image/cached_network_image';
 
 class CategoryItemWidget extends StatelessWidget {
   final int index;

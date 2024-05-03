@@ -4,7 +4,7 @@ import 'package:news_app/core/config/constants.dart';
 import 'package:news_app/core/home/pages/category_view.dart';
 import 'package:news_app/core/widgets/custom_background.dart';
 import 'package:news_app/main.dart';
-import '../../models/category_model.dart';
+import '../../../data/models/category_model.dart';
 import '../widgets/category_item_widget.dart';
 import '../widgets/custom_drawer.dart';
 
@@ -61,31 +61,33 @@ class _HomeViewState extends State<HomeView> {
            if(selectedCategory!=null)
              Padding(
                padding: const EdgeInsets.only(bottom: 6,right: 3),
-               child: IconButton(onPressed: (){}, icon: Icon(
-                 Icons.search,
-                 color: Colors.white,
-                 size: 35,)),
-             )
-           ],
-         leadingWidth: 100,
-       ),
-        drawer: CustomDrawer(onDrawerClick: onDrawerClick,),
-
-        body: selectedCategory==null? Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Text("Pick your category \nof interest",
-                style:  Constants.theme.textTheme.bodyLarge?.copyWith(
-                  color: Color(0xFF4F5A69),
-                ),
-
-
-              textAlign: TextAlign.start,
-
-
-              ),
+                child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.white,
+                      size: 35,
+                    )),
+              )
+          ],
+          leadingWidth: 100,
+        ),
+        drawer: CustomDrawer(
+          onDrawerClick: onDrawerClick,
+        ),
+        body: selectedCategory == null
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(
+                      "Pick your category \nof interest",
+                      style: Constants.theme.textTheme.bodyLarge?.copyWith(
+                        color: Color(0xFF4F5A69),
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
             ),
             Expanded(
 
@@ -101,18 +103,16 @@ class _HomeViewState extends State<HomeView> {
                   itemBuilder: (context, index) => CategoryItemWidget(
                     index:index,
                     categoryModel: categoryList[index],
-                    onCategoryClicked: onCategoryClicked,
-
-
-
-                  ),
-                    itemCount: 6,
-                                  ),
-            )
-
-          ],
-        ):CategoryView(categoryModel: selectedCategory!,),
-
+                        onCategoryClicked: onCategoryClicked,
+                      ),
+                      itemCount: 6,
+                    ),
+                  )
+                ],
+              )
+            : CategoryView(
+                categoryModel: selectedCategory!,
+              ),
       ),
     );
 

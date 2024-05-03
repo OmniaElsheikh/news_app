@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/config/constants.dart';
-import 'package:news_app/core/models/source_model.dart';
+
+import '../../data/models/source_model.dart';
+
 class TabItem extends StatelessWidget {
   bool isSelected;
-  final SourceModel sourceModel ;
-   TabItem({Key? key,
-  required this.sourceModel,
-    this.isSelected=false
-  }) : super(key: key);
+  final SourceModel sourceModel;
+
+  TabItem({Key? key, required this.sourceModel, this.isSelected = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
